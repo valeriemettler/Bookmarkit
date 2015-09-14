@@ -1,10 +1,13 @@
 var myDataRef = new Firebase('https://boiling-torch-464.firebaseio.com/');
   $('#tagInput').keypress(function (e) {
+    console.log(e.keyCode);
     if (e.keyCode == 13) {
       var url = $('#urlInput').val();
       var text = $('#tagInput').val();
       myDataRef.push({url: url, text: text});
+      //$('#urlInput').val('');
       $('#tagInput').val('');
+      $('#urlInput').focus().val('');
     }
 });
 
