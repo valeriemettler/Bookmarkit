@@ -1,28 +1,51 @@
-var urlList = {};
+var fb = new Firebase('https://boiling-torch-464.firebaseio.com/');
+var d = {};
+var item;
 
-var myDataRef = new Firebase('https://boiling-torch-464.firebaseio.com/');
-$('#tagInput').keypress(function(e) {
-    if (e.keyCode == 13) {
-        var url = $('#urlInput').val();
-        var text = $('#tagInput').val();
-        myDataRef.push({
-            url: url,
-            text: text
+$(document).ready(function() {
+    fb.on('child_added', function(item) {
+        var text = item.val()['text'];
+        var url = item.val()['url'];
+
+        if (text in d) {
+            d[text].push(url);
+        } else {
+            d[text] = [url];
+        }
+
+        var x = "";
+        for (item in d) {
+            x = x + '<div><br><div>#' + item + '</div>';
+
+            for (var i = 0; i < d[item].length; i++) {
+                x = x + '<li><a href="http://www.' + d[item][i]
+                + '" target="_blank">' + d[item][i] + '</a></li></div>';
+            }
+        }
+        $("#bookmarkDiv").html(x);
+    })
+
+    var display = function() {
+        $('#tagInput').keypress(function(e) {
+            if (e.keyCode == 13) {
+                var url = $('#urlInput').val();
+                var text = $('#tagInput').val();
+
+                fb.push({
+                    url: url,
+                    text: text
+                });
+
+                if (text in d) {
+                    d[text].push(url);
+                } else {
+                    d[text] = [url];
+                }
+
+                $('#tagInput').val('');
+                $('#urlInput').focus().val('');
+            }
         });
-        location.reload();
-        $('#tagInput').val('');
-    }
+    };
+    display();
 });
-
-myDataRef.on('child_added', function(snapshot) {
-    var bookmark = snapshot.val();
-    displayBookmarks(bookmark.url, bookmark.text);
-});
-
-var displayBookmarks = function(url, text) {
-    $('#urlInput').focus().val('');
-    var x = "";
-    x = x + '<div><br><div>#' + text + '</div>';
-    x = x + '<div><a href="http://www.' + url + '" target="_blank">' + url + '</a></div></div>';
-    $("#bookmarkDiv").append(x);
-}
