@@ -26,10 +26,14 @@ $(document).ready(function() {
     })
 
     var display = function() {
-        $('#tagInput').keypress(function(e) {
+        $('#input').keypress(function(e) {
             if (e.keyCode == 13) {
                 var url = $('#urlInput').val();
                 var text = $('#tagInput').val();
+
+                if (url === "" || text === ""){
+                    return;
+                }
 
                 fb.push({
                     url: url,
@@ -44,7 +48,8 @@ $(document).ready(function() {
 
                 $('#tagInput').val('');
                 $('#urlInput').focus().val('');
-            }
+
+          }
         });
     };
     display();
