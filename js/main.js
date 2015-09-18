@@ -14,14 +14,18 @@ $(document).ready(function() {
         }
 
         var x = "";
+
         for (item in d) {
-            x = x + '<div><br><div>#' + item + '</div>';
+            x = x + '<div class="card">';
+            x = x + '<div class="tag">#' + item + '</div>';
 
             for (var i = 0; i < d[item].length; i++) {
-                x = x + '<li><a href="http://www.' + d[item][i]
-                + '" target="_blank">' + d[item][i] + '</a></li></div>';
+                // x = x + '<div class=""><div class="">';
+                x = x + '<div class="urls"><a href="http://www.' + d[item][i] + '" target="_blank">' + d[item][i] + '</a></div>';
             }
+             x = x + '</div>';
         }
+
         $("#bookmarkDiv").html(x);
     })
 
@@ -48,7 +52,6 @@ $(document).ready(function() {
 
                 $('#tagInput').val('');
                 $('#urlInput').focus().val('');
-
           }
         });
     };

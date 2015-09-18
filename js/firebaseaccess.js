@@ -18,8 +18,9 @@ $(document).ready(function(){
   setTimeout(function() {
     var item;
     for (item in d){
-        console.log(item);
+        console.log(item); //this is the key in the dictionary
 //        console.log(d[item]);  this is the array of key
+
     for (var i = 0; i < d[item].length; i++){
         console.log("  " + d[item][i]); //this iterates throught the array of urls
     }

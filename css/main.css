@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.card {
+    float:left;
+    text-align: center;
+    border: 1px solid #ccc;
+    width: 150px;
+    margin: 20px;
+    border: 1px #ccc solid;
+    height: 200px;
+}
+
+.tag {
+    padding: 10px;
+    font-size: 30px;
+    border-bottom: 1px #ccc solid;
+    color: #ccc;
+}
+
+.urls {
+    padding: 10px;
+}
+
