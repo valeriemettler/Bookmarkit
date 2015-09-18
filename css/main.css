@@ -20,6 +20,11 @@ html {
 .tag {
     font-size: 18px;
     color: #ccc;
+    margin-left: -5px;
+}
+
+.urls {
+    margin-left: 5px;
 }
 
 
