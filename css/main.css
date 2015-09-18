@@ -7,24 +7,50 @@ html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.card {
-    float:left;
-    text-align: center;
-    border: 1px solid #ccc;
-    width: 150px;
-    margin: 20px;
-    border: 1px #ccc solid;
-    height: 200px;
+.top {
+    margin-top: 50px;
+    margin-right: 20px;
+}
+
+.toprow {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-left: -7px;
+}
+
+#logo {
+    height: 100%;
+    margin: 0 2px 3px 0;
+}
+
+.navbar-brand > img {
+    display: inline-block;
 }
 
 .tag {
-    padding: 10px;
-    font-size: 30px;
-    border-bottom: 1px #ccc solid;
+    font-size: 18px;
     color: #ccc;
+    margin-left: -18px;
 }
 
-.urls {
-    padding: 10px;
+.cover-container {
+    height: 180px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
+.cover-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    border: 1px solid #ccc;
+    width: 116px;
+    height: 158px;
+    vertical-align: bottom;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
