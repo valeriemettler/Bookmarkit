@@ -15,16 +15,15 @@ $(document).ready(function() {
 
         var x = "";
 
+         var x = "";
         for (item in d) {
-            x = x + '<div class="container"><div class="row">';
-            x = x + '<div class="tag">#' + item + '</div></div></div><div class="row-fluid"><div class="col-lg-12 col-md-10"><div class="cover-container">';
+            x = x + '<div class="tag">#' + item + '</div>';
 
             for (var i = 0; i < d[item].length; i++) {
-                x = x + '<div class="cover-item"><a href="http://www.' + d[item][i] + '" target="_blank">' + d[item][i] + '</a></div>';
+                x = x + '<div class="urls"><a href="http://www.' + d[item][i]
+                + '" target="_blank">' + d[item][i] + '</a></div>';
             }
-              x = x + '</div></div></div>';
         }
-
         $("#bookmarkDiv").html(x);
     })
 
