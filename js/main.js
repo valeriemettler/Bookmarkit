@@ -2,6 +2,33 @@ var fb = new Firebase('https://boiling-torch-464.firebaseio.com/');
 var d = {};
 var item;
 
+var display = function() {
+    $('#input').keypress(function(e) {
+        if (e.keyCode == 13) {
+            var url = $('#urlInput').val();
+            var text = $('#tagInput').val();
+
+            if (url === "" || text === ""){
+                return;
+            }
+
+            fb.push({
+                url: url,
+                text: text
+            });
+
+            if (text in d) {
+                d[text].push(url);
+            } else {
+                d[text] = [url];
+            }
+
+            $('#tagInput').val('');
+            $('#urlInput').focus().val('');
+      }
+    });
+};
+
 $(document).ready(function() {
     fb.on('child_added', function(item) {
         var text = item.val()['text'];
@@ -27,31 +54,6 @@ $(document).ready(function() {
         $("#bookmarkDiv").html(x);
     })
 
-    var display = function() {
-        $('#input').keypress(function(e) {
-            if (e.keyCode == 13) {
-                var url = $('#urlInput').val();
-                var text = $('#tagInput').val();
 
-                if (url === "" || text === ""){
-                    return;
-                }
-
-                fb.push({
-                    url: url,
-                    text: text
-                });
-
-                if (text in d) {
-                    d[text].push(url);
-                } else {
-                    d[text] = [url];
-                }
-
-                $('#tagInput').val('');
-                $('#urlInput').focus().val('');
-          }
-        });
-    };
     display();
 });
