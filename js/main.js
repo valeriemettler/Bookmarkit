@@ -54,6 +54,5 @@ $(document).ready(function() {
         $("#bookmarkDiv").html(x);
     })
 
-
     display();
 });
