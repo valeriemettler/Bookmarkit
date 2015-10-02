@@ -4,12 +4,7 @@ var item;
 
 
 function displayCurrentTag() {
-    //console.log("a hashchange happened!!");
-    //var page_url = 'http://bookmarkit.xyz/';
-    //var current_url_w_hash = page_url + window.location.hash;
-    //console.log(current_url_w_hash);
     var current_tag = window.location.hash.split('#')[1];
-    //console.log(current_tag); //returns tag without hash
     displayTag(current_tag);
 }
 window.onhashchange = displayCurrentTag;
@@ -25,20 +20,6 @@ var displayTag = function(current_tag) {
 
     $("#bookmarkDiv").html(x);
 };
-
-
-
-function trackHash() {
-    var page_url = 'http://bookmarkit.xyz/';
-    var current_url_w_hash = page_url + window.location.hash;
-    if (document.location != page_url + current_url_w_hash) {
-        window.location = document.location;
-    }
-    return false;
-}
-//var RunTabs = setInterval(TrackHash, 200);
-//trackHash();
-
 
 var display = function() {
     $('#input').keypress(function(e) {
