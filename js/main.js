@@ -2,20 +2,19 @@ var fb = new Firebase('https://boiling-torch-464.firebaseio.com/');
 var d = {};
 var item;
 
-var getTagUrl = function() {
-    $('#bookmarkDiv').on('click', '.taghash', function(event) {
-        event.stopPropagation();
-        var that = this;
-        var current_tag = that.hash.split('#')[1];
-        // var current_url_no_hash = window.location.hash.split('#')[1];
-        console.log(current_tag); //returns tag without hash
-        displayTag(current_tag);
-    });
-};
+
+function displayCurrentTag() {
+    //console.log("a hashchange happened!!");
+    //var page_url = 'http://bookmarkit.xyz/';
+    //var current_url_w_hash = page_url + window.location.hash;
+    //console.log(current_url_w_hash);
+    var current_tag = window.location.hash.split('#')[1];
+    //console.log(current_tag); //returns tag without hash
+    displayTag(current_tag);
+}
+window.onhashchange = displayCurrentTag;
 
 var displayTag = function(current_tag) {
-    //display single tag with urls from d
-    console.log(d[current_tag]);
     var x = "";
 
     x = x + '<div class="tag">#' + current_tag + '</div>';
@@ -26,6 +25,19 @@ var displayTag = function(current_tag) {
 
     $("#bookmarkDiv").html(x);
 };
+
+
+
+function trackHash() {
+    var page_url = 'http://bookmarkit.xyz/';
+    var current_url_w_hash = page_url + window.location.hash;
+    if (document.location != page_url + current_url_w_hash) {
+        window.location = document.location;
+    }
+    return false;
+}
+//var RunTabs = setInterval(TrackHash, 200);
+//trackHash();
 
 
 var display = function() {
@@ -77,6 +89,5 @@ $(document).ready(function() {
         }
         $("#bookmarkDiv").html(x);
     })
-    getTagUrl();
     display();
 });

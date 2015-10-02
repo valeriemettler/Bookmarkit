@@ -6,6 +6,9 @@ html, body {
 html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+.all {
+    margin-left: 22px;
+}
 
 .toprow {
     margin-top: -20px;
