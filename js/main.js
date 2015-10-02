@@ -6,11 +6,27 @@ var getTagUrl = function() {
     $('#bookmarkDiv').on('click', '.taghash', function(event) {
         event.stopPropagation();
         var that = this;
-        var current_url_no_hash = that.hash.split('#')[1];
-       // var current_url_no_hash = window.location.hash.split('#')[1];
-        console.log(current_url_no_hash); //returns tag without hash
+        var current_tag = that.hash.split('#')[1];
+        // var current_url_no_hash = window.location.hash.split('#')[1];
+        console.log(current_tag); //returns tag without hash
+        displayTag(current_tag);
     });
 };
+
+var displayTag = function(current_tag) {
+    //display single tag with urls from d
+    console.log(d[current_tag]);
+    var x = "";
+
+    x = x + '<div class="tag">#' + current_tag + '</div>';
+
+    for (var i = 0; i < d[current_tag].length; i++) {
+        x = x + '<div class="urls"><a href="http://www.' + d[current_tag][i] + '" target="_blank">' + d[current_tag][i] + '</a></div>';
+    }
+
+    $("#bookmarkDiv").html(x);
+};
+
 
 var display = function() {
     $('#input').keypress(function(e) {
@@ -52,7 +68,6 @@ $(document).ready(function() {
 
         var x = "";
 
-        // var x = "";
         for (item in d) {
             x = x + '<div class="tag"><a href="#' + item + '" class="taghash">#' + item + '</a></div>';
 
