@@ -42,9 +42,9 @@ $(document).ready(function() {
 
         var x = "";
 
-         var x = "";
+         // var x = "";
         for (item in d) {
-            x = x + '<div class="tag">#' + item + '</div>';
+            x = x + '<div class="tag"><a href="#' + item + '">#' + item + '</a></div>';
 
             for (var i = 0; i < d[item].length; i++) {
                 x = x + '<div class="urls"><a href="http://www.' + d[item][i]
